@@ -1,20 +1,31 @@
 {
-    "inbounds": [
+  "inbounds": [{
+    "port": 33211,
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
         {
-            "port": 33211,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "1ad6bef5-9515-4f07-8fe9-dd2ba83cbe73"
-                    }
-                ]
-            }
+          "id": "1ad6bef5-9515-4f07-8fe9-dd2ba83cbe73",
+          "level": 1,
+          "alterId": 64
         }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom"
-        }
+      ]
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
     ]
-}
+  }
